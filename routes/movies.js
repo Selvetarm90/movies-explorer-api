@@ -21,7 +21,13 @@ movieRouter.post('/movies', celebrate({
       .pattern(regExpId),
   }),
 }), createMovie);
+
 movieRouter.get('/movies', getMovies);
-movieRouter.delete('/movies/:movieId', deleteMovie);
+
+movieRouter.delete('/movies/:movieId', celebrate({
+  params: Joi.object().keys({
+    movieId: Joi.string().pattern(regExpId).required(),
+  }),
+}), deleteMovie);
 
 module.exports = { movieRouter };
