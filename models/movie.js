@@ -10,6 +10,10 @@ const movieSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Необходимо ввести название фильма'],
   },
+  director: {
+    type: String,
+    required: [true, 'Необходимо ввести Режиссёра'],
+  },
   country: {
     type: String,
     required: [true, 'Необходимо ввести страну создания'],
@@ -59,7 +63,7 @@ const movieSchema = new mongoose.Schema({
     required: true,
   },
   movieId: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Number,
     required: true,
   },
 }, { versionKey: false });

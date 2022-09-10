@@ -5,20 +5,20 @@ const { regExpUrl, regExpId } = require('../utils/constants');
 
 movieRouter.post('/movies', celebrate({
   body: Joi.object().keys({
-    nameRU: Joi.string().min(2).max(30).required(),
-    nameEN: Joi.string().min(2).max(30).required(),
-    country: Joi.string().min(2).max(30).required(),
+    nameRU: Joi.string().required(),
+    nameEN: Joi.string().required(),
+    country: Joi.string().required(),
+    director: Joi.string().required(),
     duration: Joi.number().required(),
-    year: Joi.string().min(3).max(4).required(),
-    description: Joi.string().min(2).max(200).required(),
+    year: Joi.number().required(),
+    description: Joi.string().required(),
     image: Joi.string().required()
       .pattern(regExpUrl),
     trailerLink: Joi.string().required()
       .pattern(regExpUrl),
     thumbnail: Joi.string().required()
       .pattern(regExpUrl),
-    movieId: Joi.string().required()
-      .pattern(regExpId),
+    movieId: Joi.number().required(),
   }),
 }), createMovie);
 

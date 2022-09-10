@@ -7,7 +7,7 @@ module.exports.handleError = (err, req, res, next) => {
     .status(statusCode)
     .send({
       message: statusCode === INTERNAL_SERVER_ERROR
-        ? 'На сервере произошла ошибка'
+        ? 'На сервере произошла ошибка!'
         : message,
     });
   next();

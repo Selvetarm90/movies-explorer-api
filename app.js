@@ -9,8 +9,9 @@ const NotFound = require('./errors/not-found');
 const auth = require('./middlewares/auth');
 const { checkCorseError } = require('./utils/checkCorseError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const { MONGO_URL_DEV } = require('./utils/constants');
 
-const { PORT = 3001 } = process.env;
+const { PORT = 3001, MONGO_URL = MONGO_URL_DEV } = process.env;
 
 const app = express();
 
@@ -19,7 +20,7 @@ app.use(checkCorseError);
 app.use(express.json());
 
 const main = async () => {
-  await mongoose.connect('mongodb://localhost:27017/moviesdb', {
+  await mongoose.connect(MONGO_URL, {
     useNewUrlParser: true,
   });
   console.log('moviesdb connect');
