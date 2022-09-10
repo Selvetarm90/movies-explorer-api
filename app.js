@@ -2,14 +2,12 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
-const { userRouter } = require('./routes/users');
-const { movieRouter } = require('./routes/movies');
 const { handleError } = require('./utils/handleError');
 const NotFound = require('./errors/not-found');
-const auth = require('./middlewares/auth');
 const { checkCorseError } = require('./utils/checkCorseError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { MONGO_URL_DEV } = require('./utils/constants');
+const { allRouters } = require('./routes');
 
 const { PORT = 3001, MONGO_URL = MONGO_URL_DEV } = process.env;
 
@@ -31,10 +29,7 @@ main().catch((err) => {
 });
 
 app.use(requestLogger);
-
-app.use(userRouter);
-app.use(auth);
-app.use(movieRouter);
+app.use(allRouters);
 app.use((req, res, next) => {
   next(new NotFound('Маршрут не найден'));
 });
