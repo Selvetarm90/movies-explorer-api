@@ -2,7 +2,7 @@
 const allowedCors = [
   'https://api.paramonov.movieexplorer.nomoredomains.sbs',
   'http://paramonov.movieexplorer.nomoredomains.sbs',
-  'localhost:3001',
+  'http://localhost:3001',
 ];
 
 // eslint-disable-next-line consistent-return
