@@ -1,7 +1,9 @@
 // Массив доменов, с которых разрешены кросс-доменные запросы
 const allowedCors = [
+  'http://api.paramonov.movieexplorer.nomoredomains.sbs',
   'https://api.paramonov.movieexplorer.nomoredomains.sbs',
   'http://paramonov.movieexplorer.nomoredomains.sbs',
+  'https://paramonov.movieexplorer.nomoredomains.sbs',
   'http://localhost:3001',
 ];
 
